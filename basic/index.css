@@ -147,7 +147,7 @@ a.bu:hover{
     fill: white;
 }
 img{
-    width: 50%;
+    width: 100%;
     user-select:none;
 }
 h1{
@@ -157,4 +157,7 @@ h1{
 h2{
     color:#3b3f61;
     text-align:center;
+}
+.story{
+    margin: auto;
 }
