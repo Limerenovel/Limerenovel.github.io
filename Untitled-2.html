@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>小說網站</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        canvas {
+            display: block;
+            background-color: #f0f0f0;
+            margin: 20px auto;
+            border: 1px solid #ccc;
+        }
+        #chapterSelect {
+            display: block;
+            margin: 10px auto;
+            padding: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <select id="chapterSelect">
+        <option value="chapter1">第一本小說</option>
+        <option value="chapter2">第二本小說</option>
+        <!-- 添加更多章節選項 -->
+    </select>
+    <canvas id="novelCanvas" width="800" height="500"></canvas>
+
+    <script>
+        const canvas = document.getElementById('novelCanvas');
+const ctx = canvas.getContext('2d');
+
+const novels = {
+    chapter1: "這是第一本小說的內容。",
+    chapter2: "這是第二本小說的內容。",
+    // 添加更多小說內容
+};
+
+const chapterSelect = document.getElementById('chapterSelect');
+chapterSelect.addEventListener('change', function() {
+    const selectedChapter = chapterSelect.value;
+    drawChapter(novels[selectedChapter]);
+});
+
+function drawChapter(content) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '20px Arial';
+    ctx.fillStyle = 'black';
+    
+    const lines = content.split('\n');
+    let y = 50;
+    for (let line of lines) {
+        ctx.fillText(line, 50, y);
+        y += 30;
+    }
+}
+
+drawChapter(novels.chapter1);
+    </script>
+</body>
+</html>
