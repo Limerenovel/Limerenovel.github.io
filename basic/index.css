@@ -1,6 +1,4 @@
-* {
-font-family: "Comic Sans MS", 微軟正黑體;
-}
+* {font-family: "Comic Sans MS", å¾®è»Ÿæ­£é»‘é«”;}
 
 .Header{
     display:block;
@@ -39,7 +37,7 @@ tz {
 }
 
 .inter {
-    display: block;
+    display: flex;
     margin: auto;
     margin-top:10px;
     word-break: break-all;
@@ -47,6 +45,7 @@ tz {
     color: #535878;
     padding:10px 10px 10px 10px;
     border-radius:10px;
+    flex-direction: row;
 }
 .ointer {
     background-color: #782020;
@@ -83,8 +82,8 @@ tz {
     transition-duration: 0.5s;
     display: flex;
     flex-direction: column;
-    background: #d03a3a;
-    box-shadow:7px 1px 5px #471212;
+    background: #eee5db;
+    box-shadow: 7px 1px 5px #927965;
     z-index:2;
     border-radius:10px;
     user-select:none;
@@ -97,17 +96,17 @@ tz.eir {
     font-size: 4vw;
     padding: 1vw;
     font-weight: bolder;
-    text-shadow: 0.1em 0.1em 0.2em #f9b2b2;
-    -webkit-text-stroke: 1px #f9bab0;
-    -webkit-text-fill-color: #692d2d;
+    text-shadow: 0.1em 0.1em 0.2em #bca486;
+    -webkit-text-stroke: 1px #896c45;
+    -webkit-text-fill-color: #f4e1c8;
 }
 tz.eir:hover {
     font-size: 4vw;
     padding: 1vw;
     font-weight: bolder;
-    text-shadow: 0.1em 0.1em 0.2em #8a4c4c;
-    -webkit-text-stroke: 1px #692d2d;
-    -webkit-text-fill-color: #f9bab0;
+    text-shadow: 0.1em 0.1em 0.2em #766956;
+    -webkit-text-stroke: 1px #967446;
+    -webkit-text-fill-color: #e5d0b5;
 }
 .bw {
     color: rgb(255, 162, 0);
@@ -142,12 +141,20 @@ a.bu:hover{
 }
 
 .hom:hover {
-    color: #b67373;
-    background-color:black;
+    color: #8c857c;
 }
 .pat {
     fill: white;
 }
 img{
-    width: 10%;
+    width: 50%;
+    user-select:none;
+}
+h1{
+    color:#41445b;
+    text-align:center;
+}
+h2{
+    color:#3b3f61;
+    text-align:center;
 }

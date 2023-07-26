@@ -1,6 +1,5 @@
 let tn=document.querySelector(".wqe");
 let tz=[ "Home",'/'
-        ,"Link",'/link'
         ,"About",'/about'];
 let tl=tz.length;
 for(let i=0;i<tl;i+=2){
