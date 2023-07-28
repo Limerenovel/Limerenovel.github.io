@@ -153,6 +153,9 @@ img{
 h1{
     color:#41445b;
     text-align:center;
+    display: flex;
+    flex-direction: column;
+    white-space:nowrap;
 }
 h2{
     color:#3b3f61;
@@ -170,4 +173,9 @@ h2{
 }
 .bk{
     width:20%;
+}
+h3{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
