@@ -36,7 +36,7 @@ tz {
     font-size: 17px;
 }
 
-.inter {
+.inter{
     display: flex;
     margin: auto;
     margin-top:10px;
@@ -160,4 +160,11 @@ h2{
 }
 .story{
     margin: auto;
+    margin-top:10px;
+    word-break: break-all;
+    font-size: 30px;
+    color: #535878;
+    padding:10px 10px 10px 10px;
+    border-radius:10px;
+    user-select:none;
 }
