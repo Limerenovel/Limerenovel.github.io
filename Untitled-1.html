@@ -65,7 +65,7 @@
     let currentPage = 0;
     let novelPages = [];
 
-    page.textContent=`第${currentPage}章`;
+    page.textContent=`第${currentPage+1}章`;
     // 使用XMLHttpRequest來讀取檔案內容
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'novel.txt', true);
@@ -87,7 +87,7 @@
       if (currentPage > 0) {
         currentPage--;
         showPage(currentPage);
-        page.textContent=`第${currentPage}章`;
+        page.textContent=`第${currentPage+1}章`;
       }
     });
 
@@ -95,7 +95,7 @@
       if (currentPage < novelPages.length - 1) {
         currentPage++;
         showPage(currentPage);
-        page.textContent=`第${currentPage}章`;
+        page.textContent=`第${currentPage+1}章`;
       }
     });
 
