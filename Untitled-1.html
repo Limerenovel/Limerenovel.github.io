@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>暗影魔姬</title>
+  <title>小說網站</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -47,7 +47,7 @@
 </head>
 <body>
   <div class="container">
-    <h1>暗影魔姬</h1><!-- 小說名稱 -->
+    <h1></h1><!-- 小說名稱 -->
     <h2 id="page"></h2><!-- 第幾章 -->
     <div id="novel-content">
       <!-- 這裡放小說內容，會由JavaScript填充 -->
@@ -57,22 +57,19 @@
       <button id="next-btn">下一頁</button>
     </div>
   </div>
-
   <script>
     const novelContent = document.getElementById('novel-content');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
-    const page= document.getElementById('page');
     let currentPage = 0;
     let novelPages = [];
-    
-    page.textContent=`第${currentPage}章`;
+
     // 使用XMLHttpRequest來讀取檔案內容
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'novel.txt', true);
+    xhr.open('GET', 'bj/6.txt', true);
     xhr.onload = function () {
       if (xhr.status === 200) {
-        novelPages = xhr.responseText.split('\n');
+        novelPages = xhr.responseText.split('\n\n');
         showPage(currentPage);
       } else {
         console.error('讀取檔案時發生錯誤：', xhr.status);
@@ -88,6 +85,7 @@
       if (currentPage > 0) {
         currentPage--;
         showPage(currentPage);
+        page.textContent=`第${currentPage}章`;
       }
     });
 
@@ -95,6 +93,7 @@
       if (currentPage < novelPages.length - 1) {
         currentPage++;
         showPage(currentPage);
+        page.textContent=`第${currentPage}章`;
       }
     });
 
