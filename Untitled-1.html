@@ -68,7 +68,7 @@
     page.textContent=`第${currentPage}章`;
     // 使用XMLHttpRequest來讀取檔案內容
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', 'bj/6.txt', true);
+    xhr.open('GET', 'novel.txt', true);
     xhr.onload = function () {
       if (xhr.status === 200) {
         novelPages = xhr.responseText.split('\n\n');
