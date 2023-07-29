@@ -160,6 +160,7 @@ h1{
 h2{
     color:#3b3f61;
     text-align:center;
+    white-space:nowrap;
 }
 .story{
     margin: auto;
@@ -178,4 +179,5 @@ h3{
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    white-space:nowrap;
 }
