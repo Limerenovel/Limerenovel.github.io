@@ -3,13 +3,6 @@
 <head>
   <title>同一個屋簷下</title>
   <link href="../../basic/book.css" rel="stylesheet" type="text/css">
-  <style>
-    p {
-      text-indent: 2em;
-      margin-bottom: 1em; /* 調整段與段之間的距離 */
-      line-height: 1.5; /* 調整段內行距 */
-    }
-  </style>
 </head>
 <body>
   <div class="container">
@@ -75,7 +68,13 @@
     // 顯示指定頁面的內容
     function showPage(pageIndex) {
       const content = novelPages[pageIndex];
-      const paragraphs = content.split('<br>').map(paragraph => `<p>${paragraph}</p>`).join('');
+      let paragraphs = content.split('<br>').map(paragraph => `<p>${paragraph}</p>`).join('');
+      
+      // 如果是最後一章，添加“（完結）”
+      if (pageIndex === novelPages.length - 1) {
+        paragraphs += '<p class="center">（完結）</p>';
+      }
+      
       novelContent.innerHTML = paragraphs;
 
       // 滾動到頁面的最上方
