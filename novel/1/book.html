@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>同一個屋簷下</title>
-	<link href="../../basic/book.css" rel="stylesheet" type="text/css">
+  <link href="../../basic/book.css" rel="stylesheet" type="text/css">
 </head>
 <body>
   <div class="container">
@@ -24,18 +24,18 @@
     let currentPage = 0;
     let novelPages = [];
 
-    page.textContent=`第${currentPage+1}章`;
+    page.textContent = `第${currentPage + 1}章`;
+
     // 使用XMLHttpRequest來讀取檔案內容
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'novel.txt', true);
     xhr.onload = function () {
       if (xhr.status === 200) {
         const novelText = xhr.responseText;
-        // 將空格替換為 &nbsp;
-        const novelTextWithSpacesReplaced = novelText.replace(/ /g, '&nbsp;');
-        // 將換行符替換為 <br> 標籤
-        const novelTextFormatted = novelTextWithSpacesReplaced.replace(/\n/g, '<br>');
-        novelPages = novelTextFormatted.split('&&&');
+        // 使用 \n&&&\n 作為分割符
+        novelPages = novelText.split('\r\n\r\n&&&\r\n\r\n');
+        // 將空格替換為 &nbsp; 並將換行符替換為 <br>
+        novelPages = novelPages.map(page => page.replace(/ /g, '&nbsp;').replace(/\n/g, '<br>'));
         showPage(currentPage);
       } else {
         console.error('讀取檔案時發生錯誤：', xhr.status);
@@ -51,7 +51,7 @@
       if (currentPage > 0) {
         currentPage--;
         showPage(currentPage);
-        page.textContent=`第${currentPage+1}章`;
+        page.textContent = `第${currentPage + 1}章`;
       }
     });
 
@@ -59,15 +59,15 @@
       if (currentPage < novelPages.length - 1) {
         currentPage++;
         showPage(currentPage);
-        page.textContent=`第${currentPage+1}章`;
+        page.textContent = `第${currentPage + 1}章`;
       }
     });
 
     // 顯示指定頁面的內容
     function showPage(pageIndex) {
-      const content = novelPages[pageIndex].replace(/\n/g, '<br>'); // 將換行符替換為<br>標籤
+      const content = novelPages[pageIndex];
       novelContent.innerHTML = `<p>${content}</p>`;
-      
+
       // 更新按鈕顏色
       prevBtn.style.color = (currentPage === 0) ? "gray" : "#3c429b"; // 如果當前頁是第一頁，將上一頁按鈕顏色設置為灰色，否則設置為原來的顏色
       nextBtn.style.color = (currentPage === novelPages.length - 1) ? "gray" : "#3c429b"; // 如果當前頁是最後一頁，將下一頁按鈕顏色設置為灰色，否則設置為原來的顏色
