@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>小說網站</title>
+</head>
+<body>
+  <div class="container">
+    <h1>小說網站</h1><!-- 小說名稱 -->
+    <h2 id="page"></h2><!-- 第幾章 -->
+    <div id="novel-content">
+      <!-- 這裡放小說內容，會由JavaScript填充 -->
+    </div>
+    <div id="page-buttons">
+      <button id="prev-btn">上一章</button>
+      <button id="next-btn">下一章</button>
+    </div>
+  </div>
+  <script>
+    const novelContent = document.getElementById('novel-content');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    const page = document.getElementById('page');
+    let currentPage = 0;
+    let novelPages = [];
+
+    page.textContent=`第${currentPage+1}章`;
+    // 使用XMLHttpRequest來讀取檔案內容
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'novel.txt', true);
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        const novelText = xhr.responseText;
+        // 將空格替換為 &nbsp;
+        const novelTextWithSpacesReplaced = novelText.replace(/ /g, '&nbsp;');
+        // 將換行符替換為 <br> 標籤
+        const novelTextFormatted = novelTextWithSpacesReplaced.replace(/\n/g, '<br>');
+        novelPages = novelTextFormatted.split('&&&');
+        showPage(currentPage);
+      } else {
+        console.error('讀取檔案時發生錯誤：', xhr.status);
+      }
+    };
+    xhr.onerror = function () {
+      console.error('讀取檔案時發生錯誤。');
+    };
+    xhr.send();
+
+    // 翻頁功能
+    prevBtn.addEventListener('click', () => {
+      if (currentPage > 0) {
+        currentPage--;
+        showPage(currentPage);
+        page.textContent=`第${currentPage+1}章`;
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentPage < novelPages.length - 1) {
+        currentPage++;
+        showPage(currentPage);
+        page.textContent=`第${currentPage+1}章`;
+      }
+    });
+
+    // 顯示指定頁面的內容
+    function showPage(pageIndex) {
+      const content = novelPages[pageIndex].replace(/\n/g, '<br>'); // 將換行符替換為<br>標籤
+      novelContent.innerHTML = `<p>${content}</p>`;
+      
+      // 更新按鈕顏色
+      prevBtn.style.color = (currentPage === 0) ? "gray" : "#3c429b"; // 如果當前頁是第一頁，將上一頁按鈕顏色設置為灰色，否則設置為原來的顏色
+      nextBtn.style.color = (currentPage === novelPages.length - 1) ? "gray" : "#3c429b"; // 如果當前頁是最後一頁，將下一頁按鈕顏色設置為灰色，否則設置為原來的顏色
+    }
+  </script>
+</body>
+</html>

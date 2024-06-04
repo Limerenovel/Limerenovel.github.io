@@ -1,0 +1,42 @@
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f2f2f2;
+    margin: 0;
+    padding: 0;
+  }
+  .container {
+    max-width: 90%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+  }
+  h1 {
+    text-align: center;
+    font-size: 300%;
+    display: inline;
+  }
+  #novel-content {
+    margin: 20px 0;
+    font-size: 150%;
+  }
+  #page-buttons {
+    text-align: center;
+  }
+  #page-buttons button {
+    font-size: 16px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    border: aqua;
+    border-radius: 50px;
+    color: #3c429b;
+    user-select: none;
+  }
+  h2 {
+      display: inline;
+      font-size: 200%;
+  }
