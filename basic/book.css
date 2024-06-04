@@ -60,4 +60,6 @@ body {
 }
     p {
       text-indent: 2em;
+      margin-bottom: 1em; /* 調整段與段之間的距離 */
+      line-height: 1.5; /* 調整段內行距 */
     }
