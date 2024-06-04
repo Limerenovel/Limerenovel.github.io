@@ -58,3 +58,6 @@ body {
     width: 10px;
     height: 10px;
 }
+    p {
+      text-indent: 2em;
+    }
