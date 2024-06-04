@@ -3,6 +3,13 @@
 <head>
   <title>同一個屋簷下</title>
   <link href="../../basic/book.css" rel="stylesheet" type="text/css">
+  <style>
+    p {
+      text-indent: 2em;
+      margin-bottom: 1em; /* 調整段與段之間的距離 */
+      line-height: 1.5; /* 調整段內行距 */
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -34,8 +41,10 @@
         const novelText = xhr.responseText;
         // 使用 \n&&&\n 作為分割符
         novelPages = novelText.split('\n\n&&&\n\n');
-        // 將空格替換為 &nbsp; 並將換行符替換為 <br>
-        novelPages = novelPages.map(page => page.replace(/ /g, '&nbsp;').replace(/\n/g, '<br>'));
+        // 去除每段開頭的多餘空格，並將換行符替換為 <br>
+        novelPages = novelPages.map(page => 
+          page.split('\n').map(paragraph => paragraph.trim()).join('<br>')
+        );
         showPage(currentPage);
       } else {
         console.error('讀取檔案時發生錯誤：', xhr.status);
