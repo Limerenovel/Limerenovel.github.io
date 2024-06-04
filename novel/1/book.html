@@ -68,9 +68,25 @@
       const content = novelPages[pageIndex];
       novelContent.innerHTML = `<p>${content}</p>`;
 
-      // 更新按鈕顏色
-      prevBtn.style.color = (currentPage === 0) ? "gray" : "#3c429b"; // 如果當前頁是第一頁，將上一頁按鈕顏色設置為灰色，否則設置為原來的顏色
-      nextBtn.style.color = (currentPage === novelPages.length - 1) ? "gray" : "#3c429b"; // 如果當前頁是最後一頁，將下一頁按鈕顏色設置為灰色，否則設置為原來的顏色
+      // 滾動到頁面的最上方
+      window.scrollTo(0, 0);
+
+      // 更新按鈕顏色和禁用狀態
+      if (currentPage === 0) {
+        prevBtn.style.color = "gray";
+        prevBtn.disabled = true;
+      } else {
+        prevBtn.style.color = "#3c429b";
+        prevBtn.disabled = false;
+      }
+
+      if (currentPage === novelPages.length - 1) {
+        nextBtn.style.color = "gray";
+        nextBtn.disabled = true;
+      } else {
+        nextBtn.style.color = "#3c429b";
+        nextBtn.disabled = false;
+      }
     }
   </script>
 </body>
