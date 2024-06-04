@@ -66,7 +66,8 @@
     // 顯示指定頁面的內容
     function showPage(pageIndex) {
       const content = novelPages[pageIndex];
-      novelContent.innerHTML = `<p>${content}</p>`;
+      const paragraphs = content.split('<br>').map(paragraph => `<p>${paragraph}</p>`).join('');
+      novelContent.innerHTML = paragraphs;
 
       // 滾動到頁面的最上方
       window.scrollTo(0, 0);
