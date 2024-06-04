@@ -33,7 +33,7 @@
       if (xhr.status === 200) {
         const novelText = xhr.responseText;
         // 使用 \n&&&\n 作為分割符
-        novelPages = novelText.split('\r\n\r\n&&&\r\n\r\n');
+        novelPages = novelText.split('\r\n&&&\r\n');
         // 將空格替換為 &nbsp; 並將換行符替換為 <br>
         novelPages = novelPages.map(page => page.replace(/ /g, '&nbsp;').replace(/\n/g, '<br>'));
         showPage(currentPage);
