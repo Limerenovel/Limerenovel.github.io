@@ -1,6 +1,6 @@
 @font-face {
   font-family: '標楷';
-  src: url('./kaiu.ttf') format('truetype');
+  src: url('./edukai-5.0.ttf') format('truetype');
   unicode-range: U+4E00-9FFF;
   /* 設定為中文字元範圍 */
 }
