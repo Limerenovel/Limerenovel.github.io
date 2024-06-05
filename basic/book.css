@@ -1,69 +1,76 @@
-
+@font-face {
+  font-family: '標楷';
+  src: url('./kaiu.ttf') format('truetype');
+  unicode-range: U+4E00-9FFF;
+  /* 設定為中文字元範圍 */
+}
 body {
-    font-family: 標楷體;
-    line-height: 1.6;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-  }
-  .container {
-    max-width: 90%;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-  }
-  h1 {
-    text-align: center;
-    font-size: 300%;
-    display: inline;
-  }
-  #novel-content {
-    margin: 20px 0;
-    font-size: 150%;
-  }
-  #page-buttons {
-    text-align: center;
-  }
-  #page-buttons button {
-    font-size: 16px;
-    padding: 10px 20px;
-    margin: 0 5px;
-    cursor: pointer;
-    border: aqua;
-    border-radius: 50px;
-    color: #3c429b;
-    user-select: none;
-    font-family: 標楷體;
-  }
-  h2 {
-      display: inline;
-      font-size: 200%;
-  }
-  ::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
-    border-radius: 10px;
-    background-color: #d1d1d1;
+  font-family: '標楷', sans-serif;
+  line-height: 1.6;
+  background-color: #f2f2f2;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  max-width: 90%;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+h1 {
+  text-align: center;
+  font-size: 300%;
+  display: inline;
+}
+#novel-content {
+  margin: 20px 0;
+  font-size: 150%;
+}
+#page-buttons {
+  text-align: center;
+}
+#page-buttons button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  border: aqua;
+  border-radius: 50px;
+  color: #3c429b;
+  user-select: none;
+  font-family: 標楷;
+}
+h2 {
+  display: inline;
+  font-size: 175%;
+}
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0);
+  border-radius: 10px;
+  background-color: #d1d1d1;
 }
 ::-webkit-scrollbar-thumb {
-    cursor: default;
-    background-color: #8d8c8c;
-    border-radius: 10px;
+  cursor: default;
+  background-color: #8d8c8c;
+  border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-    background-color: #a6a6a6;
+  background-color: #a6a6a6;
 }
 ::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+  width: 10px;
+  height: 10px;
 }
-    p {
-      text-indent: 2em;
-      margin-bottom: 1em; /* 調整段與段之間的距離 */
-      line-height: 1.5; /* 調整段內行距 */
-    }
-    .center {
-      text-align: center;
-      font-weight: bold;
-    }
+p {
+  text-indent: 2em;
+  margin-bottom: 1em;
+  /* 調整段與段之間的距離 */
+  line-height: 1.5;
+  /* 調整段內行距 */
+}
+.center {
+  text-align: center;
+  font-weight: bold;
+}

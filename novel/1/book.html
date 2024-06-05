@@ -1,30 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>同一個屋簷下</title>
-  <link href="../../basic/book.css" rel="stylesheet" type="text/css">
+    <title>同一個屋簷下</title>
+    <link href="../../basic/book.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-  <div class="container">
-    <h1>同一個屋簷下</h1><!-- 小說名稱 -->
-    <h2 id="page"></h2><!-- 第幾章 -->
-    <div id="novel-content">
-      <!-- 這裡放小說內容，會由JavaScript填充 -->
+    <div class="container">
+        <h1>同一個屋簷下</h1><!-- 小說名稱 -->
+        <h2 id="page"></h2><!-- 第幾章 -->
+        <div id="novel-content">
+            <!-- 這裡放小說內容，會由JavaScript填充 -->
+        </div>
+        <div id="page-buttons">
+            <button id="prev-btn">上一章</button> <button id="next-btn">下一章</button>
+        </div>
     </div>
-    <div id="page-buttons">
-      <button id="prev-btn">上一章</button>
-      <button id="next-btn">下一章</button>
-    </div>
-  </div>
-  <script>
+    <script>
     const novelContent = document.getElementById('novel-content');
     const prevBtn = document.getElementById('prev-btn');
     const nextBtn = document.getElementById('next-btn');
-    const page = document.getElementById('page');
     let currentPage = 0;
     let novelPages = [];
-
-    page.textContent = `第${currentPage + 1}章`;
 
     // 使用XMLHttpRequest來讀取檔案內容
     const xhr = new XMLHttpRequest();
@@ -34,8 +30,8 @@
         let novelText = xhr.responseText;
         // 移除被 /* 和 */ 包住的部分
         novelText = novelText.replace(/\/\*[\s\S]*?\*\//g, '');
-        // 使用 \n&&&\n 作為分割符
-        novelPages = novelText.split('\n\n&&&\n\n');
+        // 使用 &&& 作為分割符
+        novelPages = novelText.split('&&&');
         // 去除每段開頭的多餘空格，並將換行符替換為 <br>
         novelPages = novelPages.map(page => 
           page.split('\n').map(paragraph => paragraph.trim()).join('<br>')
@@ -55,7 +51,6 @@
       if (currentPage > 0) {
         currentPage--;
         showPage(currentPage);
-        page.textContent = `第${currentPage + 1}章`;
       }
     });
 
@@ -63,21 +58,30 @@
       if (currentPage < novelPages.length - 1) {
         currentPage++;
         showPage(currentPage);
-        page.textContent = `第${currentPage + 1}章`;
       }
     });
 
     // 顯示指定頁面的內容
     function showPage(pageIndex) {
-      const content = novelPages[pageIndex];
-      let paragraphs = content.split('<br>').map(paragraph => `<p>${paragraph}</p>`).join('');
+      let content = novelPages[pageIndex];
+      // 獲取章節名稱
+      const chapterTitleMatch = content.match(/\/\/(.+?)\/\//);
+      let chapterTitle = '';
+      if (chapterTitleMatch) {
+        chapterTitle = chapterTitleMatch[1];
+        // 移除章節名稱部分
+        content = content.replace(/\/\/(.+?)\/\//, '').trim();
+      }
+      
+      document.getElementById("page").innerText=chapterTitle
+      let paragraphs = content.split('<br>').map(paragraph => `<p>${paragraph}<\/p>`).join('');
       
       // 如果是最後一章，添加“（完結）”
       if (pageIndex === novelPages.length - 1) {
-        paragraphs += '<p class="center">（完結）</p>';
+        paragraphs += '<p class="center">（完結）<\/p>';
       }
       
-      novelContent.innerHTML = paragraphs;
+      novelContent.innerHTML = `${paragraphs}`;
 
       // 滾動到頁面的最上方
       window.scrollTo(0, 0);
@@ -99,6 +103,6 @@
         nextBtn.disabled = false;
       }
     }
-  </script>
+    </script>
 </body>
 </html>
