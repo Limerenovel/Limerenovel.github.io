@@ -1,3 +1,9 @@
+/* Example CSS Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 @font-face {
   font-family: '標楷';
   src: url('./edukai-5.0.ttf') format('truetype');
@@ -26,7 +32,7 @@ h1 {
 }
 #novel-content {
   margin: 20px 0;
-  font-size: 30px;
+  font-size: 4vw !important;
 }
 #page-buttons {
   text-align: center;
