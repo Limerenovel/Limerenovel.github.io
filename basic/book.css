@@ -27,7 +27,7 @@ h1 {
 }
 #novel-content {
   margin: 20px 0;
-  font-size: 25px !important;
+  font-size: 150%;
 }
 #page-buttons {
   text-align: center;
@@ -67,9 +67,7 @@ h2 {
 p {
   text-indent: 2em;
   margin-bottom: 1em;
-  /* 調整段與段之間的距離 */
   line-height: 1.5;
-  /* 調整段內行距 */
 }
 .center {
   text-align: center;
