@@ -92,7 +92,7 @@
 
       // 滾動到頁面的最上方
       window.scrollTo(0, 0);
-    function bbtn(let a,let col,let dis){
+    function bbtn(a, col, dis){
         document.querySelectorAll(a).forEach( btn =>{
             btn.style.color=col;
             btn.disabled = dis;
@@ -100,17 +100,15 @@
     }
       // 更新按鈕顏色和禁用狀態
       if (currentPage === 0) {
-          bbtn("prev-btn","gray",true)
+          bbtn("prev-btn","gray",true);
       } else {
-          bbtn("prev-btn","#3c429b",false)
+          bbtn("prev-btn","#3c429b",false);
       }
 
       if (currentPage === novelPages.length - 1) {
-        nextBtn.style.color = "gray";
-        nextBtn.disabled = true;
+          bbtn("next-btn","gray",true);
       } else {
-        nextBtn.style.color = "#3c429b";
-        nextBtn.disabled = false;
+        bbtn("next-btn","#3c429b",false);
       }
     }
     </script>
