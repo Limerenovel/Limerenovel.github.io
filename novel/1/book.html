@@ -23,8 +23,6 @@
     </div>
     <script>
     const novelContent = document.getElementById('novel-content');
-    const prevBtn = document.getElementById("prev-btn")
-    const nextBtn = document.getElementById("next-btn")
     let currentPage = 0;
     let novelPages = [];
 
@@ -94,14 +92,17 @@
 
       // 滾動到頁面的最上方
       window.scrollTo(0, 0);
-
+    function bbtn(let a,let col,let dis){
+        document.querySelectorAll(a).forEach( btn =>{
+            btn.style.color=col;
+            btn.disabled = dis;
+        });
+    }
       // 更新按鈕顏色和禁用狀態
       if (currentPage === 0) {
-        prevBtn.style.color = "gray";
-        prevBtn.disabled = true;
+          bbtn("prev-btn","gray",true)
       } else {
-        prevBtn.style.color = "#3c429b";
-        prevBtn.disabled = false;
+          bbtn("prev-btn","#3c429b",false)
       }
 
       if (currentPage === novelPages.length - 1) {
