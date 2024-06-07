@@ -23,8 +23,8 @@
     </div>
     <script>
     const novelContent = document.getElementById('novel-content');
-    const prevBtn = document.querySelectorAll("#prev-btn")
-    const nextBtn = document.querySelectorAll("#next-btn")
+    const prevBtn = document.getElementById("prev-btn")
+    const nextBtn = document.getElementById("next-btn")
     let currentPage = 0;
     let novelPages = [];
 
@@ -53,20 +53,23 @@
     xhr.send();
 
     // 翻頁功能
-    prevBtn.addEventListener('click', () => {
-      if (currentPage > 0) {
-        currentPage--;
-        showPage(currentPage);
-      }
+    document.querySelectorAll("#prevBtn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            if (currentPage > 0) {
+            currentPage--;
+            showPage(currentPage);
+            }
+        });
     });
-
-    nextBtn.addEventListener('click', () => {
-      if (currentPage < novelPages.length - 1) {
-        currentPage++;
-        showPage(currentPage);
-      }
+    document.querySelectorAll("#nextBtn").forEach(btn => {
+        btn.addEventListener("click", () => {
+            if (currentPage < novelPages.length - 1) {
+                currentPage++;
+                showPage(currentPage);
+            }
+        });
     });
-
+        
     // 顯示指定頁面的內容
     function showPage(pageIndex) {
       let content = novelPages[pageIndex];
