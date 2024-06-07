@@ -112,16 +112,18 @@
       }
     }
     let a = document.querySelector("#A");
-    document.getElementById('A').addEventListener('click', function() {
-        if (a.innerText=="a"){
-            a.innerText = "A";
-            document.getElementById('novel-content').style.fontSize = "200%";
-        }
-        else {
-            a.innerText = "a";
-            document.getElementById('novel-content').style.fontSize = "150%";
-        }
+    document.querySelectorAll("#A").forEach(a => {
+        a.addEventListener('click', function() {
+            if (a.innerText === "a"){
+                a.innerText = "A";
+                document.getElementById('novel-content').style.fontSize = "200%";
+            } else {
+                a.innerText = "a";
+                document.getElementById('novel-content').style.fontSize = "150%";
+            }
+        });
     });
+
     </script>
 </body>
 </html>
