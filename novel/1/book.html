@@ -53,7 +53,7 @@
     xhr.send();
 
     // 翻頁功能
-    document.querySelectorAll("#prevBtn").forEach(btn => {
+    document.querySelectorAll("#prev-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             if (currentPage > 0) {
             currentPage--;
@@ -61,7 +61,7 @@
             }
         });
     });
-    document.querySelectorAll("#nextBtn").forEach(btn => {
+    document.querySelectorAll("#next-btn").forEach(btn => {
         btn.addEventListener("click", () => {
             if (currentPage < novelPages.length - 1) {
                 currentPage++;
