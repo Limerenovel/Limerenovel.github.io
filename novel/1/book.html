@@ -112,17 +112,19 @@
       }
     }
     let a = document.querySelector("#A");
-    document.querySelectorAll("#A").forEach(a => {
-        a.addEventListener('click', function() {
-            if (a.innerText === "a"){
-                a.innerText = "A";
-                document.getElementById('novel-content').style.fontSize = "200%";
-            } else {
-                a.innerText = "a";
-                document.getElementById('novel-content').style.fontSize = "150%";
-            }
-        });
-    });
+    document.querySelector("#A").onclick = () => {
+        if (a.innerText === "a"){
+            a.innerText = "A";
+            document.getElementById('novel-content').style.fontSize = "200%";
+            document.querySelector("h1").style.fontSize="400%";
+            document.querySelector("h2").style.fontSize="234%";
+        } else {
+            a.innerText = "a";
+            document.getElementById('novel-content').style.fontSize = "150%";
+            document.querySelector("h1").style.fontSize="300%";
+            document.querySelector("h2").style.fontSize="175%";
+        }
+    }
 
     </script>
 </body>
