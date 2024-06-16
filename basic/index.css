@@ -149,7 +149,7 @@ a.bu:hover{
     fill: white;
 }
 img{
-    width: 50%;
+    width: 100% !important;
     user-select:none;
 }
 h1{
@@ -165,6 +165,7 @@ h2{
     white-space:nowrap;
 }
 .story{
+    display: inline-block;
     margin: auto;
     margin-top:10px;
     word-break: break-all;
@@ -172,9 +173,6 @@ h2{
     color: #535878;
     padding:10px 10px 10px 10px;
     user-select:none;
-}
-.bk{
-    width:20%;
 }
 h3{
     display: flex;
