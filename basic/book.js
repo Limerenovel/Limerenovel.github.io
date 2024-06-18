@@ -25,7 +25,7 @@ xhr.onload = function () {
       if (pageIndex >= 0 && pageIndex < novelPages.length) {
         currentPage = pageIndex;
       } else {
-        document.getElementById('novel-content').innerHTML = '<p class="center">404 無此章節<\/p>';
+        showErrorPage();
         return;
       }
     }
@@ -102,6 +102,15 @@ function showPage(pageIndex) {
   } else {
       bbtn("#next-btn", "#3c429b", false);
   }
+}
+
+function showErrorPage() {
+  novelContent.innerHTML = '<p class="center">404 無此章節<\/p><button id="go-to-first">回到第一章</button>';
+  document.getElementById("page").innerText = '';
+  document.getElementById("go-to-first").addEventListener("click", () => {
+    currentPage = 0;
+    showPage(currentPage);
+  });
 }
 
 let a = document.querySelector("#A");
