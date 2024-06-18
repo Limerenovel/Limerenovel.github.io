@@ -127,3 +127,21 @@ document.querySelector("#A").onclick = () => {
         document.querySelector("h2").style.fontSize = "175%";
     }
 }
+
+document.getElementById("share").addEventListener("click", () => {
+    // Get current URL
+    const currentURL = window.location.href.split('?')[0]; // Remove existing query parameters
+
+    // Append page parameter
+    const sharedURL = `${currentURL}?page=${currentPage}`;
+
+    // Copy URL to clipboard
+    navigator.clipboard.writeText(sharedURL)
+        .then(() => {
+            // Alert success
+            alert("已複製分享連結到剪貼簿：\n\n" + sharedURL);
+        })
+        .catch(err => {
+            console.error('無法複製到剪貼簿: ', err);
+        });
+});
