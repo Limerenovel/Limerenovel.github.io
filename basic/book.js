@@ -105,7 +105,7 @@ function showPage(pageIndex) {
 }
 
 function showErrorPage() {
-  novelContent.innerHTML = '<p class="center">404 無此章節<\/p><button id="go-to-first">回到第一章</button>';
+  novelContent.innerHTML = '<p class="center">404 無此章節<button id="go-to-first">回到第一章</button><\/p>';
   document.getElementById("page").innerText = '';
   document.getElementById("go-to-first").addEventListener("click", () => {
     currentPage = 0;
