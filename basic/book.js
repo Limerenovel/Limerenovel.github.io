@@ -16,6 +16,20 @@ xhr.onload = function () {
     novelPages = novelPages.map(page => 
       page.split('\n').map(paragraph => paragraph.trim()).join('<br>')
     );
+
+    // 解析URL參數
+    const urlParams = new URLSearchParams(window.location.search);
+    const pageParam = urlParams.get('page');
+    if (pageParam !== null) {
+      const pageIndex = parseInt(pageParam, 10);
+      if (pageIndex >= 0 && pageIndex < novelPages.length) {
+        currentPage = pageIndex;
+      } else {
+        document.getElementById('novel-content').innerHTML = '<p class="center">404 無此章節<\/p>';
+        return;
+      }
+    }
+
     showPage(currentPage);
   } else {
     console.error('讀取檔案時發生錯誤：', xhr.status);
@@ -56,7 +70,7 @@ function showPage(pageIndex) {
     content = content.replace(/\/\/(.+?)\/\//, '').trim();
   }
   
-  document.getElementById("page").innerText=chapterTitle
+  document.getElementById("page").innerText = chapterTitle;
   let paragraphs = content.split('<br>').map(paragraph => `<p>${paragraph}<\/p>`).join('');
   
   // 如果是最後一章，添加“（完結）”
@@ -68,36 +82,39 @@ function showPage(pageIndex) {
 
   // 滾動到頁面的最上方
   window.scrollTo(0, 0);
-function bbtn(a, col, dis){
-    document.querySelectorAll(a).forEach( btn =>{
-        btn.style.color=col;
+  
+  function bbtn(a, col, dis){
+    document.querySelectorAll(a).forEach(btn => {
+        btn.style.color = col;
         btn.disabled = dis;
     });
-}
+  }
+
   // 更新按鈕顏色和禁用狀態
   if (currentPage === 0) {
-      bbtn("#prev-btn","gray",true);
+      bbtn("#prev-btn", "gray", true);
   } else {
-      bbtn("#prev-btn","#3c429b",false);
+      bbtn("#prev-btn", "#3c429b", false);
   }
 
   if (currentPage === novelPages.length - 1) {
-      bbtn("#next-btn","gray",true);
+      bbtn("#next-btn", "gray", true);
   } else {
-    bbtn("#next-btn","#3c429b",false);
+      bbtn("#next-btn", "#3c429b", false);
   }
 }
+
 let a = document.querySelector("#A");
 document.querySelector("#A").onclick = () => {
-    if (a.innerText === "a"){
+    if (a.innerText === "a") {
         a.innerText = "A";
         document.getElementById('novel-content').style.fontSize = "200%";
-        document.querySelector("h1").style.fontSize="400%";
-        document.querySelector("h2").style.fontSize="234%";
+        document.querySelector("h1").style.fontSize = "400%";
+        document.querySelector("h2").style.fontSize = "234%";
     } else {
         a.innerText = "a";
         document.getElementById('novel-content').style.fontSize = "150%";
-        document.querySelector("h1").style.fontSize="300%";
-        document.querySelector("h2").style.fontSize="175%";
+        document.querySelector("h1").style.fontSize = "300%";
+        document.querySelector("h2").style.fontSize = "175%";
     }
 }
