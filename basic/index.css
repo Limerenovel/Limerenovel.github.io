@@ -2,12 +2,13 @@
     font-family: '標楷';
     src: url('./TW-Kai-98_1.ttf') format('truetype');
     unicode-range: U+4E00-9FFF;
-    /* 設定為中文字元範圍 */
+    font-display: swap; /* 使用 swap 模式 */
   }
-
-* {
-    font-family: "標楷", "Comic Sans MS";
-}
+  
+  * {
+    font-family: "Comic Sans MS", sans-serif, "標楷";
+  }
+  
 
 .Header{
     display:block;
@@ -156,7 +157,7 @@ a.bu:hover{
     fill: white;
 }
 img{
-    width: 100% !important;
+    width: 100%;
     user-select:none;
 }
 h1{
