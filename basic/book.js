@@ -2,6 +2,15 @@ const novelContent = document.getElementById('novel-content');
 let currentPage = 0;
 let novelPages = [];
 
+// 從 URL 中獲取書籍 ID (bookId) 參數
+const urlParams = new URLSearchParams(window.location.search);
+
+// 取得 'book' 參數的值
+const bookId = document.querySelector(".book_id").innerText
+
+// 顯示參數值
+console.log("Book ID is:", bookId);
+
 // 使用XMLHttpRequest來讀取檔案內容
 const xhr = new XMLHttpRequest();
 xhr.open('GET', 'novel.txt', true);
@@ -17,8 +26,16 @@ xhr.onload = function () {
       page.split('\n').map(paragraph => paragraph.trim()).join('<br>')
     );
 
-    // 解析URL參數
-    const urlParams = new URLSearchParams(window.location.search);
+    // 嘗試從localStorage中讀取存儲的頁面數字
+    const savedPage = localStorage.getItem(`${bookId}_currentPage`);
+    if (savedPage !== null) {
+      const pageIndex = parseInt(savedPage, 10);
+      if (pageIndex >= 0 && pageIndex < novelPages.length) {
+        currentPage = pageIndex;
+      }
+    }
+
+    // 解析URL參數中的 `page` 參數
     const pageParam = urlParams.get('page');
     if (pageParam !== null) {
       const pageIndex = parseInt(pageParam, 10);
@@ -102,6 +119,9 @@ function showPage(pageIndex) {
   } else {
       bbtn("#next-btn", "#3c429b", false);
   }
+
+  // 更新localStorage存儲當前頁面
+  localStorage.setItem(`${bookId}_currentPage`, currentPage);
 }
 
 function showErrorPage() {
@@ -133,7 +153,7 @@ document.getElementById("share").addEventListener("click", () => {
     const currentURL = window.location.href.split('?')[0]; // Remove existing query parameters
 
     // Append page parameter
-    const sharedURL = `${currentURL}?page=${currentPage}`;
+    const sharedURL = `${currentURL}?bookId=${bookId}&page=${currentPage}`;
 
     // Copy URL to clipboard
     navigator.clipboard.writeText(sharedURL)

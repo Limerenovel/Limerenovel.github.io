@@ -7,43 +7,56 @@
 	<link href="./basic/index.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-    	<div class="wqe">
-    	</div>
-	<div class="topnav">
-		<button id="wfe">
-	    		<svg viewBox="0 0 24 24" width="50">
-				<path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" class="pat">
-				</path>
-			</svg>
-	        </button>
-		<a class="hom" onclick="hom()">novel</a>
-	</div>
-	<div class="int">
-	</div>
-	<div class="inter">
+    <div class="wqe">
     </div>
-	<div class="story">
-    	<a href="./novel/1/book.html">
-    		<img src="./basic/book.png" class="bk">
-    	</a>
-    	<br>
-    	<p>同一個屋簷下</p>
+    <div class="topnav">
+        <button id="wfe">
+            <svg viewBox="0 0 24 24" width="50">
+                <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" class="pat">
+                </path>
+            </svg>
+        </button>
+        <a class="hom" onclick="hom()">novel</a>
     </div>
-	<div class="story">
-    	<a href="./novel/2/book.html">
-    		<img src="./basic/book.png" class="bk">
-    	</a>
-    	<br>
-    	<p>十浪駭觀</p>
-	</div>
-	<div class="story">
-    	<a href="./novel/3/book.html">
-    		<img src="./basic/book.png" class="bk">
-    	</a>
-    	<br>
-    	<p>黑道自我</p>
-	</div>
-	<script src="./basic/wq.js"></script>
-	<script src="./basic/tz.js"></script>
+    <div class="int">
+    </div>
+    <div class="inter">
+    </div>
+    <div id="story-container">
+        <!-- 這裡的內容將由 JavaScript 動態插入 -->
+    </div>
+    <script src="./basic/wq.js"></script>
+    <script src="./basic/tz.js"></script>
+    <script>
+        const stories = [
+            { title: "同一個屋簷下", link: "./novel/1/book.html" },
+            { title: "十浪駭觀", link: "./novel/2/book.html" },
+            { title: "黑道自我", link: "./novel/3/book.html" },
+            { title: "詩集", link: "./novel/4/book.html" }
+        ];
+
+        const storyContainer = document.getElementById('story-container');
+
+        stories.forEach(story => {
+            const storyDiv = document.createElement('div');
+            storyDiv.className = 'story';
+
+            const storyLink = document.createElement('a');
+            storyLink.href = story.link;
+
+            const storyImg = document.createElement('img');
+            storyImg.src = './basic/book.png';
+            storyImg.className = 'bk';
+
+            storyLink.appendChild(storyImg);
+            storyDiv.appendChild(storyLink);
+
+            const storyTitle = document.createElement('p');
+            storyTitle.textContent = story.title;
+
+            storyDiv.appendChild(storyTitle);
+            storyContainer.appendChild(storyDiv);
+        });
+    </script>
 </body>
 </html>

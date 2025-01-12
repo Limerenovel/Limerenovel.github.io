@@ -2,6 +2,7 @@
   font-family: '標楷';
   src: url('./TW-Kai-98_1.ttf') format('truetype');
   unicode-range: U+4E00-9FFF;
+  font-display: swap;
   /* 設定為中文字元範圍 */
 }
 body {
@@ -80,4 +81,7 @@ p {
 #A{
   right: 0;
   position: absolute;
+}
+.book_id{
+    display: none;
 }
